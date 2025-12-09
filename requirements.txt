@@ -3,3 +3,7 @@ pandas
 numpy
 matplotlib
 scikit-learn
+pymongo
+certifi
+
+# -e . ## add when the project it completed at the last line
