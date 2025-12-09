@@ -1,3 +1,3 @@
-## Deploying Ml Model for Network Security Dataset
+## Deploying ML Model for Network Security Dataset
 
 dataset link-
