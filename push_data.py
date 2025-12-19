@@ -66,7 +66,7 @@ class NetworkDataExtract:
         try:
             self.database=database
             self.collection=collection
-            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL) 
             self.database=self.mongo_client[database]
             self.collection=self.database[collection]
             
