@@ -14,6 +14,7 @@ from networksecurity.logging.logger import logging
 
 #adding data ingestion config
 from networksecurity.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig
+from networksecurity.entity.artifact_entity import DataIngestionArtifact
 
 load_dotenv()
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
@@ -25,14 +26,97 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys)
         
+    def export_collection_as_dataframe(self):
+        '''
+        Reads data from mongo db and convert it to dataframe
+        
+        Returns: pandas Dataframe 
+        '''
+        try:
+            database_name=self.data_ingestion_config.database
+            collection_name=self.data_ingestion_config.collection
+            self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
+            collection=self.mongo_client[database_name][collection_name]
+            records=collection.find()#return an iterator
+            
+            df=pd.DataFrame(list(records))#cant create df of cursor(iterator obj)
+            
+            if "_id" in df.columns.to_list():
+                df=df.drop(columns=["_id"],axis=1)
+                
+            df.replace({"na",np.nan},inplace=True)
+            
+            return df
+        except Exception as e:
+            raise CustomException(e,sys)
+    
+    def export_data_to_feature_store(self,dataframe:pd.DataFrame):
+        '''
+        conveting dataframe to csv and storing it in feature store location
+        
+        Returns:dataframe(that was given in parameter)
+        '''
+        try:
+            feature_store_file_path=self.data_ingestion_config.feature_store_file_path
+            dir_path=os.path.dirname(feature_store_file_path)
+            os.makedirs(dir_path,exist_ok=True)
+            
+            dataframe.to_csv(feature_store_file_path,index=False,header=True)
+            return dataframe
+            
+        except Exception as e:
+            raise CustomException(e,sys)
+        
+    def split_data_as_train_test(self,dataframe:pd.DataFrame):
+        try:
+            ratio=self.data_ingestion_config.train_test_ratio
+            train_set,test_set=train_test_split(
+                dataframe,test_size=ratio
+            )
+            logging.info("train and test split done")
+            
+            logging.info("saving down the splits")
+            train_file_path=self.data_ingestion_config.training_file_path
+            dir_path_train=os.path.dirname(train_file_path)
+            os.makedirs(dir_path_train,exist_ok=True)
+            
+            train_set.to_csv(
+                train_file_path,index=False,header=True
+            )
+            
+            test_file_path=self.data_ingestion_config.testing_file_path
+            dir_name_test=os.path.dirname(test_file_path)
+            os.makedirs(dir_name_test,exist_ok=True)
+            test_set.to_csv(
+                test_file_path,index=False,header=True
+            )
+            
+            logging.info("saving of train and test done")
+            
+        except Exception as e:
+            raise CustomException(e,sys)
+        
+        
     def initiate_data_ingestion(self):
         
         logging.info("Entered the data ingestion method or component")
         
         try:
-            df=pd.read_csv("network_data/phisingData.csv")
+            logging.info("started loading dataframe")
+            df=self.export_collection_as_dataframe()
+            df=self.export_data_to_feature_store(df)
             logging.info("the dataset has been read")
             
-            os.makedirs(os.path.dirname())
+            logging.info("starting train test split")
+            self.split_data_as_train_test(df)
+            logging.info("train test split done")
+            
+            data_ingestion_artifact=DataIngestionArtifact(train_file_path=self.data_ingestion_config.training_file_path,
+                                    test_file_path=self.data_ingestion_config.testing_file_path
+                                    )
+            
+            return data_ingestion_artifact
+            
+                   
         except Exception as e:
             raise CustomException(e,sys)
