@@ -39,6 +39,13 @@ def save_numpy_array_data(file_path:str ,array:np.array)->None:
     except Exception as e:
         raise CustomException(e,sys)
     
+def load_numpy_array_data(file_path:str)->np.array:
+    try:
+        with open(file_path,'rb') as file_obj:
+            return np.load(file_obj) 
+    except Exception as e:
+        raise CustomException(e,sys)
+    
 def save_object(file_path:str,obj:object)->None:
     '''
     saving object file such as pickle(.pkl)
@@ -48,5 +55,18 @@ def save_object(file_path:str,obj:object)->None:
         os.makedirs(dir_path,exist_ok=True)
         with open(file_path,"wb") as file_obj:
             pickle.dump(obj,file_obj)
+    except Exception as e:
+        raise CustomException(e,sys)
+    
+
+def load_object(file_path:str)->object:
+    try:
+        if not os.path.exists(file_path):
+            raise Exception (F"the file: {file_path} does not exist")
+        with open(file_path,'rb') as file_obj:
+            obj=pickle.load(file_obj)
+            
+        return obj
+    
     except Exception as e:
         raise CustomException(e,sys)

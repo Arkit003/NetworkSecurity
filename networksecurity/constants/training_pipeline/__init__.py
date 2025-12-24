@@ -20,6 +20,8 @@ TEST_FILE_NAME:str="test.csv"
 SCHEMA_FILE_PATH:str=os.path.join("data_schema","schema.yaml")
 PREPROCESSING_OBJECT_FILE_NAME="preprocessor.pkl"
 
+SAVED_MODEL_DIR:str=os.path.join("saved_models")
+MODEL_FILE_NAME:str= 'model.pkl'
 '''
 Data ingestion related components
 '''
@@ -57,3 +59,12 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS:dict= {
     "n_neighbors":3,
     "weights":"uniform",
 }
+
+'''
+MODEL TRAINER RELATED COMPONENTS
+'''
+MODEL_TRAINER_DIR_NAME:str="model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR:str="model_trainer_trained"
+MODEL_TRAINER_TRAINED_MODEL_NAME:str="model.pkl"
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHHOLD:float=0.05
+MODEL_TRAINER_EXPECTED_SCORE:float=0.6
