@@ -6,7 +6,15 @@ from networksecurity.logging.logger import logging
 from networksecurity.constants.training_pipeline import SAVED_MODEL_DIR,MODEL_FILE_NAME
 
 
-class Networkmodel:
+class NetworkModel:
+    '''
+    scaling and prdicting output for the new data
+    
+    Args:model,preprocessor
+    
+    Return:y_hat:model predicted output
+    '''
+    
     def __init__(self,model,preprocessor):
 
         try:
