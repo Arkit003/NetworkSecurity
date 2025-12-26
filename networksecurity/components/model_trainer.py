@@ -3,6 +3,12 @@ import sys
 import pandas as pd
 import numpy as np
 import mlflow
+import dagshub
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 from sklearn.metrics import r2_score
 from sklearn.linear_model import LogisticRegression
@@ -22,6 +28,9 @@ from networksecurity.logging.logger import logging
 from networksecurity.entity.config_entity import ModelTrainerConfig
 from networksecurity.entity.artifact_entity import ModelTrainerArtifact,ClassificationonMetricArtifact,DataTransformationArtifact
 
+#dagshub initilization
+os.environ["DAGSHUB_USER_TOKEN"]=os.getenv("DAGSHUB_USER_TOKEN")
+dagshub.init(repo_owner='Arkit003', repo_name='NetworkSecurity', mlflow=True)
 class ModelTrainer:
     def __init__(
         self,
@@ -136,6 +145,10 @@ class ModelTrainer:
             )
             
             logging.info(f"model trainer artifact: {model_trainer_arifact}")
+            
+            #saving our models and preprocessor for best models
+            save_object("final_models/model.pkl",best_model)
+            
             
             return model_trainer_arifact
             

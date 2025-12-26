@@ -14,9 +14,10 @@ from networksecurity.components.model_trainer import ModelTrainer
 from networksecurity.entity.config_entity import (DataIngestionConfig,
                                                   TrainingPipelineConfig,
                                                   DataValidationConfig,
-                                                  ModelTrainerConfig
+                                                  ModelTrainerConfig,
+                                                  DataTransformationConfig
                                                   )
-from networksecurity.entity.config_entity import DataTransformationConfig
+
 
 if __name__=="__main__":
     try:

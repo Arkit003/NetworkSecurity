@@ -8,5 +8,9 @@ certifi
 pymongo[srv]==3.11
 pyaml
 mlflow
+dagshub
+fastapi
+uvicorn
+python-multipart
 
 # -e . ## add when the project it completed at the last line
