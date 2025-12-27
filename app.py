@@ -52,8 +52,7 @@ async def index():
 async def train_route():
     '''
     will gonna start the training in the cli or the cloud 
-    '''
-    
+    ''' 
     try:
         train_pipeline=TrainingPipeline()
         train_pipeline.run_pipeline()
