@@ -22,6 +22,8 @@ PREPROCESSING_OBJECT_FILE_NAME="preprocessor.pkl"
 
 SAVED_MODEL_DIR:str=os.path.join("saved_models")
 MODEL_FILE_NAME:str= 'model.pkl'
+
+TRANING_BUCKET_NAME:str='arknetworksecurity'##is unique in global namespace
 '''
 Data ingestion related components
 '''

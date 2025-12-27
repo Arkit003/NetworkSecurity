@@ -83,7 +83,7 @@ class DataTransformation:
             save_object(self.data_transformation_config.transformed_object_file_path,preprocessor_object)
             
             ## saving for final model
-            save_object("final_models/preprocessor.pkl",preprocessor_object)
+            save_object("final_model/preprocessor.pkl",preprocessor_object)
             
             data_transformation_artifact=DataTransformationArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,

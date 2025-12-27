@@ -1,5 +1,3 @@
-#creating a api for our data using fastapi
-
 import os
 import sys
 
@@ -69,8 +67,8 @@ async def predict_route(request:Request,file:UploadFile=File(...)):
     try:
         df=pd.read_csv(file.file)
         
-        model=load_object("final_models/model.pkl")
-        preprocessor=load_object("final_models/preprocessor.pkl")
+        model=load_object("final_model/model.pkl")
+        preprocessor=load_object("final_model/preprocessor.pkl")
         network_model=NetworkModel(model=model,preprocessor=preprocessor)
         
         y_pred=network_model.predict(df)

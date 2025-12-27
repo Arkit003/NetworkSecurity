@@ -24,10 +24,14 @@ from networksecurity.entity.artifact_entity import (
     DataTransformationArtifact,
     ModelTrainerArtifact
 )
+from networksecurity.constants.training_pipeline import TRANING_BUCKET_NAME
+from networksecurity.cloud.s3_syncer import S3Sync
+
 
 class TrainingPipeline:
     def __init__(self):
         self.training_pipeline_config=TrainingPipelineConfig()
+        self.s3_sync=S3Sync()
         
     def start_data_ingestion(self)->DataIngestionArtifact:
         try:
@@ -83,6 +87,24 @@ class TrainingPipeline:
         except Exception as e:
             raise CustomException(e,sys)
         
+    def sync_artifact_to_s3(self):
+        try:
+            aws_bucket_url=f"s3://{TRANING_BUCKET_NAME}/artifact/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder=self.training_pipeline_config.artifact_dir,
+                                           aws_bucket_url=aws_bucket_url
+                                           )
+        except Exception as e:
+            raise CustomException(e,sys)
+    
+    def sync_saved_model_dir_to_s3(self):
+        try:
+            aws_bucket_url=f"s3://{TRANING_BUCKET_NAME}/final_model/{self.training_pipeline_config.timestamp}"
+            self.s3_sync.sync_folder_to_s3(folder=self.training_pipeline_config.model_dir,
+                                           aws_bucket_url=aws_bucket_url
+                                           )
+        except Exception as e:
+            raise CustomException(e,sys)
+        
     def run_pipeline(self):
         try:
             data_ingestion_artifact=self.start_data_ingestion()
@@ -90,6 +112,9 @@ class TrainingPipeline:
             data_transformation_artifact=self.start_data_transformation(data_validation_artifact)
             
             model_trainer_artifact=self.start_model_training(data_transformation_artifact)
+            
+            self.sync_artifact_to_s3()
+            self.sync_saved_model_dir_to_s3()
             
             return model_trainer_artifact
         except Exception as e:

@@ -147,7 +147,10 @@ class ModelTrainer:
             logging.info(f"model trainer artifact: {model_trainer_arifact}")
             
             #saving our models and preprocessor for best models
-            save_object("final_models/model.pkl",best_model)
+            #cuz of more models our model size could be very much
+            #so we will gonna store it into cloud instead of local or github
+            #in aws EC2 instance
+            save_object("final_model/model.pkl",best_model)
             
             
             return model_trainer_arifact
