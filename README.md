@@ -9,7 +9,7 @@ An **End-to-End Machine Learning** project designed to detect phishing attacks u
 
 ---
 
-## 🚀 Features
+##  Features
 
 * **End-to-End Pipeline**: Automated workflow from data ingestion to model prediction.
 * **Data Validation**: Rigorous schema checks and data drift detection.
@@ -21,7 +21,7 @@ An **End-to-End Machine Learning** project designed to detect phishing attacks u
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Component | Technology |
 | :--- | :--- |
@@ -35,7 +35,7 @@ An **End-to-End Machine Learning** project designed to detect phishing attacks u
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 NetworkSecurity/
@@ -59,7 +59,7 @@ NetworkSecurity/
 
 ---
 
-## ⚡ Installation
+##  Installation
 
 1. **Clone the repository**
    ```bash
@@ -87,7 +87,7 @@ NetworkSecurity/
 
 ---
 
-## 🏃‍♂️ Usage
+##  Usage
 
 ### 1. Data Ingestion
 To push the initial dataset to MongoDB:
@@ -117,7 +117,7 @@ docker run -p 5000:5000 network-security
 
 ---
 
-## 🔄 Workflow
+##  Workflow
 
 The pipeline consists of the following stages:
 
@@ -129,7 +129,7 @@ The pipeline consists of the following stages:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request for any feature updates or bug fixes.
 
