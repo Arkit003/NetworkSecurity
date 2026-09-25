@@ -36,7 +36,7 @@ the next, so the stages stay independently runnable.
 </p>
 
 <p align="center">
-  <sub>Editable source — <a href="./pipeline.excalidraw">pipeline.excalidraw</a> · <a href="./pipeline.png">PNG fallback</a> · <a href="./pipeline.svg">SVG</a></sub>
+  <sub>Diagram — <a href="./pipeline.png">PNG fallback</a> · <a href="./pipeline.svg">SVG</a></sub>
 </p>
 
 ---
