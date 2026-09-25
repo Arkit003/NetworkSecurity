@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="938" height="694" viewBox="22 2 938 694">
+  <rect x="22" y="2" width="938" height="694" fill="#ffffff"/>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1e1e1e"/></marker></defs>
+  <rect x="36.0" y="54.0" width="210.0" height="46.0" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="2"/>
+  <polyline points="141.0,100.0 141.0,130.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="130.0" width="250.0" height="52.0" rx="6" fill="#b2f2bb" stroke="#2f9e44" stroke-width="2"/>
+  <polyline points="161.0,182.0 161.0,212.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="212.0" width="250.0" height="66.0" rx="6" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <polyline points="161.0,182.0 161.0,208.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="308.0" width="250.0" height="66.0" rx="6" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <polyline points="161.0,278.0 161.0,304.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="404.0" width="250.0" height="66.0" rx="6" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <polyline points="161.0,374.0 161.0,400.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="500.0" width="250.0" height="66.0" rx="6" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <polyline points="161.0,470.0 161.0,496.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <polyline points="161.0,566.0 161.0,586.0" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+  <polyline points="181.0,586.0 801.0,586.0" fill="none" stroke="#1e1e1e" stroke-width="2"/>
+  <polyline points="181.0,586.0 181.0,602.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <polyline points="491.0,586.0 491.0,602.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <polyline points="801.0,586.0 801.0,602.0" fill="none" stroke="#1e1e1e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="36.0" y="606.0" width="290.0" height="76.0" rx="6" fill="#d0bfff" stroke="#6741d9" stroke-width="2"/>
+  <rect x="346.0" y="606.0" width="290.0" height="76.0" rx="6" fill="#d0bfff" stroke="#6741d9" stroke-width="2"/>
+  <rect x="656.0" y="606.0" width="290.0" height="76.0" rx="6" fill="#d0bfff" stroke="#6741d9" stroke-width="2"/>
+  <text x="36.0" y="35.3" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1e1e1e" text-anchor="start">
+    <tspan x="36.0" dy="0.0">Network Security — training pipeline</tspan>
+  </text>
+  <text x="141.0" y="71.4" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="141.0" dy="0.0">phisingData.csv</tspan>
+    <tspan x="141.0" dy="16.2">11,055 rows x 31 cols</tspan>
+  </text>
+  <text x="152.0" y="118.3" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#868e96" text-anchor="start">
+    <tspan x="152.0" dy="0.0">python push_data.py</tspan>
+  </text>
+  <text x="161.0" y="150.0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="161.0" dy="0.0">MongoDB</tspan>
+    <tspan x="161.0" dy="17.5">ArkitAi.NetworkData</tspan>
+  </text>
+  <text x="161.0" y="247.9" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="161.0" dy="0.0">1  DataIngestion</tspan>
+  </text>
+  <text x="302.0" y="232.3" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">
+    <tspan x="302.0" dy="0.0">drop _id  ·  "na" -&gt; NaN</tspan>
+    <tspan x="302.0" dy="15.0">writes feature_store.csv</tspan>
+    <tspan x="302.0" dy="15.0">train/test split 80/20</tspan>
+  </text>
+  <text x="161.0" y="343.9" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="161.0" dy="0.0">2  DataValidation</tspan>
+  </text>
+  <text x="302.0" y="328.3" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">
+    <tspan x="302.0" dy="0.0">column count vs schema.yaml</tspan>
+    <tspan x="302.0" dy="15.0">KS 2-sample drift test, p &lt; 0.05</tspan>
+    <tspan x="302.0" dy="15.0">-&gt; drift_report.yaml</tspan>
+  </text>
+  <text x="161.0" y="439.9" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="161.0" dy="0.0">3  DataTransformation</tspan>
+  </text>
+  <text x="302.0" y="424.3" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">
+    <tspan x="302.0" dy="0.0">KNNImputer(n_neighbors=3, uniform)</tspan>
+    <tspan x="302.0" dy="15.0">target  -1 -&gt; 0</tspan>
+    <tspan x="302.0" dy="15.0">no scaling (values already -1...1)</tspan>
+  </text>
+  <text x="161.0" y="535.9" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="161.0" dy="0.0">4  ModelTrainer</tspan>
+  </text>
+  <text x="302.0" y="520.3" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">
+    <tspan x="302.0" dy="0.0">5 models x GridSearchCV(cv=3)</tspan>
+    <tspan x="302.0" dy="15.0">best by R^2</tspan>
+    <tspan x="302.0" dy="15.0">-&gt; final_model/{model,preprocessor}.pkl</tspan>
+  </text>
+  <text x="181.0" y="638.0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="181.0" dy="0.0">MLflow  ·  Dagshub</tspan>
+    <tspan x="181.0" dy="17.5">f1 · precision · recall</tspan>
+  </text>
+  <text x="491.0" y="638.0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="491.0" dy="0.0">AWS S3 sync</tspan>
+    <tspan x="491.0" dy="17.5">artifact/ · final_model/</tspan>
+  </text>
+  <text x="801.0" y="629.2" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1e1e1e" text-anchor="middle" font-weight="600">
+    <tspan x="801.0" dy="0.0">FastAPI</tspan>
+    <tspan x="801.0" dy="17.5">/train · /predict</tspan>
+    <tspan x="801.0" dy="17.5">CSV in -&gt; table out</tspan>
+  </text>
+</svg>
