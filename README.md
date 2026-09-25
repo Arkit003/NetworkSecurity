@@ -255,43 +255,6 @@ currently has two placeholder steps — see the caveat below.
 
 ---
 
-## Known issues
-
-Things worth knowing before you build on this:
-
-- **The column-count validation is a no-op.** `validating_no_of_columns()` compares the
-  dataframe width against `len(self._schema_config)`, but `schema.yaml` parses to a dict with
-  two top-level keys (`columns`, `numerical_columns`), so the comparison is `31 == 2` and
-  always fails. The failure is swallowed into an `error_message_train` variable that is never
-  read, and the artifact's `validation_status` comes from the drift test alone. The fix is
-  `len(self._schema_config["columns"])`.
-- **`checking_numerical_columns()` is never called**, and its body compares an `int` to the
-  schema dict, so it would return `True` unconditionally if it were.
-- **Model selection scores with `r2_score`, not f1.** `evaluate_model` ranks candidates by
-  R² computed on the *test* split. R² is a regression metric being used for 0/1 labels, and
-  selecting on the test set leaks it into the choice. The f1/precision/recall that get logged
-  to MLflow are computed afterwards and play no part in picking the winner.
-- **Logs land in a directory named like a file.** `logger.py` calls
-  `os.makedirs(logs_path)` where `logs_path` already includes the `.log` filename, producing
-  `logs/01_12_2025_23_45_10.log/01_12_2025_23_45_10.log`. Because it runs at import time,
-  merely importing anything from the package creates that directory in your CWD.
-- **`DAGSHUB_USER_TOKEN` is needed just to import `model_trainer`** — `dagshub.init()` runs at
-  module level, so an unset token breaks `main.py` before training starts.
-- **CI is a placeholder.** The workflow's "Lint Code" and "Run unit tests" steps are just
-  `echo` statements, and the repository contains no test suite — `test_mongodb.py` is a
-  connection smoke check, not a test.
-- **`TrainingPipelineConfig` timestamps are frozen.** `def __init__(self, timestamp=datetime.now())`
-  evaluates its default once at import, so every config built in one process shares a
-  timestamp and successive runs overwrite each other's artifact directory.
-- **The prediction pipeline is unimplemented.** `networksecurity/pipeline/batch_prediction.py`
-  is a three-line stub; prediction happens inline in the `/predict` route.
-- **Repo hygiene.** `__pycache__/`, `mlflow.db` and the 27 MB `final_model/model.pkl` are all
-  committed, while `.gitignore` covers only `.venv` and `.env`. The model is also uploaded to
-  S3 by design, which suggests it no longer needs to live in git history.
-- **`requirements.txt` pins `pymongo` twice** (bare `pymongo`, then `pymongo[srv]==3.11`) and
-  pins nothing else.
-
----
 
 ## Contributing
 
